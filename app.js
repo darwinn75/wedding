@@ -61,6 +61,31 @@ app.post("/submit-form", (req, res) => {
 	})
 })
 
+app.get("/confirmation", (req, res) => {
+	const { guestName, prenom, nombrePersonnes, evenement, remarque } = req.query
+	// Render the confirmation HTML page with guest information
+	res.render("confirmation", { guestName, prenom, nombrePersonnes, evenement, remarque })
+})
+
+app.get("/view-guests", (req, res) => {
+	pool.query("SELECT * FROM guests", (err, result) => {
+		if (err) {
+			throw err
+		}
+
+		// Construct HTML table dynamically
+		let tableHtml =
+			"<table border='1'><tr><th>Guest Name</th><th>First Name</th><th>Number of Guests</th><th>Event</th><th>Remarks</th></tr>"
+		result.rows.forEach((row) => {
+			tableHtml += `<tr><td>${row.guestname}</td><td>${row.prenom}</td><td>${row.nombrepersonnes}</td><td>${row.evenement}</td><td>${row.remarque}</td></tr>`
+		})
+		tableHtml += "</table>"
+
+		// Send the HTML response
+		res.send(tableHtml)
+	})
+})
+
 // Start server
 app.listen(port, () => {
 	console.log(`Server running at http://localhost:${port}`)
