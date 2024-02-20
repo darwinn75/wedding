@@ -131,3 +131,5 @@ dist
 
 *.DS_Store
 *.db
+# Local Netlify folder
+.netlify

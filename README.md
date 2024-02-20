@@ -1,8 +1,9 @@
 # wedding
 
-## npm install
+## Command to launch locally
 
-## npm start
+- `npm install`
+- `npm start`
 
 ## TO DO:
 
