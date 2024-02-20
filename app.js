@@ -47,12 +47,22 @@ app.get("/confirmation", (req, res) => {
 })
 
 // Developer route to see all submissions
-app.get("/view-submissions", (req, res) => {
+app.get("/view-guests", (req, res) => {
 	db.all("SELECT * FROM guests", [], (err, rows) => {
 		if (err) {
 			throw err
 		}
-		res.json(rows) // Sending back a JSON response with all guest submissions
+
+		// Construct HTML table dynamically
+		let tableHtml =
+			"<table border='1'><tr><th>Guest Name</th><th>First Name</th><th>Number of Guests</th><th>Event</th><th>Remarks</th></tr>"
+		rows.forEach((row) => {
+			tableHtml += `<tr><td>${row.guestName}</td><td>${row.prenom}</td><td>${row.nombrePersonnes}</td><td>${row.evenement}</td><td>${row.remarque}</td></tr>`
+		})
+		tableHtml += "</table>"
+
+		// Send the HTML response
+		res.send(tableHtml)
 	})
 })
 
