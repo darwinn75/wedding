@@ -6,7 +6,7 @@ const app = express()
 app.set("view engine", "ejs")
 // Specify the directory where your views are located
 app.set("views", __dirname + "/public")
-const port = 3000
+const port = process.env.PORT || 3000
 const db = new sqlite3.Database("wedding.db")
 
 // Middleware
