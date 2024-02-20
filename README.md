@@ -8,6 +8,7 @@
 ## TO DO:
 
 [x]: Site en ligne
-[ ]: Add button to download DB as csv file
+[x]: Add button to download DB as csv file
+[x]: Replace SQLLite3 by Heroku PostgresQL
 [ ]: CRUD for eachline
-[ ]: Replace SQLLite3 by Heroku PostgresQL
+[ ]: CSS and wording for confimration page
