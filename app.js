@@ -72,7 +72,6 @@ app.get("/view-guests", (req, res) => {
 		if (err) {
 			throw err
 		}
-
 		// Construct HTML table dynamically
 		let tableHtml =
 			"<table border='1'><tr><th>Guest Name</th><th>First Name</th><th>Number of Guests</th><th>Event</th><th>Remarks</th></tr>"
